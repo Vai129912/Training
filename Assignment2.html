@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<style>
+table, th, td{
+    border: 1px solid black;
+}
+</style>
+<body>
+    <h1><b>Registration Form:Dance Club</b></h1>
+    <table>
+        <tr>
+            <td><b>Name:</b></td>
+            <td><lable for="name"></lable>
+            <input type="text" name="name" id="name" required></td>
+        </tr>
+        <tr>
+            <td><b>IC No:</b></td>
+            <td><lable for="ic"></lable>
+            <input type="text" name="ic" id="ic" required></td>
+        </tr>
+        <tr>
+            <td><b>Address:</b></td>
+            <td><lable for"address"></lable>
+            <textarea id="address" name="address" rows="4" cols="50"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Gender:</b></td>
+            <td><input type="radio" id="gender" name="gender" value="male">
+            <lable for="male">Male</lable>
+            <input type="radio" id="gender" name="gender" value="female">
+            <lable for="male">Female</lable></td>
+        </tr>
+        <tr>
+            <td><b>Dance Type:</b></td>
+            <td><input type="checkbox" id="dance" name="dance" value="zapin">
+            <lable for="zapin">Zapin</lable>
+            <input type="checkbox" id="dance" name="dance" value="joget">
+            <lable for="joget">Joget</lable>
+            <input type="checkbox" id="dance" name="dance" value="inang">
+            <lable for="inang">Inang</lable>
+            <input type="checkbox" id="dance" name="dance" value="lion">
+            <lable for="lion">Lion Dance</lable></td>
+        </tr>
+        <tr>
+            <td><b>Competion:</b></td>
+            <td><select id="comp" name="comp" size="3">
+                <option value="state">State Level</option>
+                <option value="national">National Level</option>
+                <option value="inter">StateInternational Level</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><b>Nationality:</b></td>
+            <td><select id="national" name="national">
+                <option value="select">Please Select</option>
+                <option value="india">Indian</option>
+                <option value="america">American</option>
+                <option value="europe">European</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><b>Password:</b></td>
+            <td><input type="password" id="pwd" name="pwd"></td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit" class="register">Register Me</button>
+    <button type="submit" class="cancel">Cancel</button>
+</body>
