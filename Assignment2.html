@@ -9,6 +9,7 @@ table, th, td{
 </style>
 <body>
     <h1><b>Registration Form:Dance Club</b></h1>
+    <hr>
     <table>
         <tr>
             <td><b>Name:</b></td>
@@ -18,7 +19,7 @@ table, th, td{
         <tr>
             <td><b>IC No:</b></td>
             <td><lable for="ic"></lable>
-            <input type="text" name="ic" id="ic" required></td>
+            <input type="text" name="ic" id="ic" size="5"required>-<input type="text" name="ic" id="ic" size="3"required>-<input type="text" name="ic" id="ic" size="5"required></td>
         </tr>
         <tr>
             <td><b>Address:</b></td>
@@ -54,8 +55,8 @@ table, th, td{
         </tr>
         <tr>
             <td><b>Nationality:</b></td>
-            <td><select id="national" name="national">
-                <option value="select">Please Select</option>
+            <td><select id="national" name="national" placeholder="Please Select">
+                <option value=""disabled selected hidden>Please Select</option>
                 <option value="india">Indian</option>
                 <option value="america">American</option>
                 <option value="europe">European</option>
