@@ -1,424 +1,381 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>click</title>
         <style>
-            body {
-  padding-top: 0;
-  font-size: 12px;
-  color: #777;
-  background: #f9f9f9;
-  font-family: 'Open Sans',sans-serif;
-  margin-top:20px;
+           body{
+    background-color: #f4f7f6;
+    margin-top:20px;
+}
+.card {
+    background: #fff;
+    transition: .5s;
+    border: 0;
+    margin-bottom: 30px;
+    border-radius: .55rem;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+}
+.chat-app .people-list {
+    width: 280px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    z-index: 7
 }
 
-.bg-white {
-  background-color: #fff;
+.chat-app .chat {
+    margin-left: 280px;
+    border-left: 1px solid #eaeaea
 }
 
-.friend-list {
-  list-style: none;
-margin-left: -40px;
+.people-list {
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s
 }
 
-.friend-list li {
-  border-bottom: 1px solid #eee;
-}
-
-.friend-list li a img {
-  float: left;
-  width: 45px;
-  height: 45px;
-  margin-right: 10px;
-}
-
- .friend-list li a {
-  position: relative;
-  display: block;
-  padding: 10px;
-  transition: all .2s ease;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  -o-transition: all .2s ease;
-}
-
-.friend-list li.active a {
-  background-color: #f1f5fc;
-}
-
-.friend-list li a .friend-name, 
-.friend-list li a .friend-name:hover {
-  color: #777;
-}
-
-.friend-list li a .last-message {
-  width: 65%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.friend-list li a .time {
-  position: absolute;
-  top: 10px;
-  right: 8px;
-}
-
-small, .small {
-  font-size: 85%;
-}
-
-.friend-list li a .chat-alert {
-  position: absolute;
-  right: 8px;
-  top: 27px;
-  font-size: 10px;
-  padding: 3px 5px;
-}
-
-.chat-message {
-  padding: 60px 20px 115px;
-}
-
-.chat {
+.people-list .chat-list li {
+    padding: 10px 15px;
     list-style: none;
-    margin: 0;
+    border-radius: 3px
 }
 
-.chat-message{
-    background: #f9f9f9;  
+.people-list .chat-list li:hover {
+    background: #efefef;
+    cursor: pointer
 }
 
-.chat li img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50em;
-  -moz-border-radius: 50em;
-  -webkit-border-radius: 50em;
+.people-list .chat-list li.active {
+    background: #efefef
 }
 
-img {
-  max-width: 100%;
+.people-list .chat-list li .name {
+    font-size: 15px
 }
 
-.chat-body {
-  padding-bottom: 20px;
+.people-list .chat-list img {
+    width: 45px;
+    border-radius: 50%
 }
 
-.chat li.left .chat-body {
-  margin-left: 70px;
-  background-color: #fff;
+.people-list img {
+    float: left;
+    border-radius: 50%
 }
 
-.chat li .chat-body {
-  position: relative;
-  font-size: 11px;
-  padding: 10px;
-  border: 1px solid #f1f5fc;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+.people-list .about {
+    float: left;
+    padding-left: 8px
 }
 
-.chat li .chat-body .header {
-  padding-bottom: 5px;
-  border-bottom: 1px solid #f1f5fc;
+.people-list .status {
+    color: #999;
+    font-size: 13px
 }
 
-.chat li .chat-body p {
-  margin: 0;
+.chat .chat-header {
+    padding: 15px 20px;
+    border-bottom: 2px solid #f4f7f6
 }
 
-.chat li.left .chat-body:before {
-  position: absolute;
-  top: 10px;
-  left: -8px;
-  display: inline-block;
-  background: #fff;
-  width: 16px;
-  height: 16px;
-  border-top: 1px solid #f1f5fc;
-  border-left: 1px solid #f1f5fc;
-  content: '';
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
+.chat .chat-header img {
+    float: left;
+    border-radius: 40px;
+    width: 40px
 }
 
-.chat li.right .chat-body:before {
-  position: absolute;
-  top: 10px;
-  right: -8px;
-  display: inline-block;
-  background: #fff;
-  width: 16px;
-  height: 16px;
-  border-top: 1px solid #f1f5fc;
-  border-right: 1px solid #f1f5fc;
-  content: '';
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
+.chat .chat-header .chat-about {
+    float: left;
+    padding-left: 10px
 }
 
-.chat li {
-  margin: 15px 0;
+.chat .chat-history {
+    padding: 20px;
+    border-bottom: 2px solid #fff
 }
 
-.chat li.right .chat-body {
-  margin-right: 70px;
-  background-color: #fff;
+.chat .chat-history ul {
+    padding: 0
 }
 
-.chat-box {
-/*
-  position: fixed;
-  bottom: 0;
-  left: 444px;
-  right: 0;
-*/
-  padding: 15px;
-  border-top: 1px solid #eee;
-  transition: all .5s ease;
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -ms-transition: all .5s ease;
-  -o-transition: all .5s ease;
+.chat .chat-history ul li {
+    list-style: none;
+    margin-bottom: 30px
 }
 
-.primary-font {
-  color: #3c8dbc;
+.chat .chat-history ul li:last-child {
+    margin-bottom: 0px
 }
 
-a:hover, a:active, a:focus {
-  text-decoration: none;
-  outline: 0;
+.chat .chat-history .message-data {
+    margin-bottom: 15px
+}
+
+.chat .chat-history .message-data img {
+    border-radius: 40px;
+    width: 40px
+}
+
+.chat .chat-history .message-data-time {
+    color: #434651;
+    padding-left: 6px
+}
+
+.chat .chat-history .message {
+    color: #444;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    display: inline-block;
+    position: relative
+}
+
+.chat .chat-history .message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat .chat-history .my-message {
+    background: #efefef
+}
+
+.chat .chat-history .my-message:after {
+    bottom: 100%;
+    left: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #efefef;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.chat .chat-history .other-message {
+    background: #e8f1f3;
+    text-align: right
+}
+
+.chat .chat-history .other-message:after {
+    border-bottom-color: #e8f1f3;
+    left: 93%
+}
+
+.chat .chat-message {
+    padding: 20px
+}
+
+.online,
+.offline,
+.me {
+    margin-right: 2px;
+    font-size: 8px;
+    vertical-align: middle
+}
+
+.online {
+    color: #86c541
+}
+
+.offline {
+    color: #e47297
+}
+
+.me {
+    color: #1d8ecd
+}
+
+.float-right {
+    float: right
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+@media only screen and (max-width: 767px) {
+    .chat-app .people-list {
+        height: 465px;
+        width: 100%;
+        overflow-x: auto;
+        background: #fff;
+        left: -400px;
+        display: none
+    }
+    .chat-app .people-list.open {
+        left: 0
+    }
+    .chat-app .chat {
+        margin: 0
+    }
+    .chat-app .chat .chat-header {
+        border-radius: 0.55rem 0.55rem 0 0
+    }
+    .chat-app .chat-history {
+        height: 300px;
+        overflow-x: auto
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .chat-app .chat-list {
+        height: 650px;
+        overflow-x: auto
+    }
+    .chat-app .chat-history {
+        height: 600px;
+        overflow-x: auto
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+    .chat-app .chat-list {
+        height: 480px;
+        overflow-x: auto
+    }
+    .chat-app .chat-history {
+        height: calc(100vh - 350px);
+        overflow-x: auto
+    }
 }
         </style>
     </head>
     <body>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdey">
-    <div class="row">
-		<div class="col-md-4 bg-white ">
-            <div class=" row border-bottom padding-sm" style="height: 40px;">
-            	Member
-            </div>
-            
-            <!-- =============================================================== -->
-            <!-- member list -->
-            <ul class="friend-list">
-                <li class="active bounceInDown">
-                	<a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>John Doe</strong>
-                		</div>
-                		<div class="last-message text-muted">Hello, Are you there?</div>
-                		<small class="time text-muted">Just now</small>
-                		<small class="chat-alert label label-danger">1</small>
-                	</a>
-                </li>
-                <li>
-                	<a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Jane Doe</strong>
-                		</div>
-                		<div class="last-message text-muted">A lot of pain is very important.</div>
-                		<small class="time text-muted">5 mins ago</small>
-                	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-                	</a>
-                </li> 
-                <li>
-                	<a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Kate</strong>
-                		</div>
-                		<div class="last-message text-muted">Bye. Take Care.</div>
-                		<small class="time text-muted">Yesterday</small>
-                		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                	</a>
-                </li>  
-                <li>
-                	<a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Kate</strong>
-                		</div>
-                		<div class="last-message text-muted">Hope everyone at home are fine!</div>
-                		<small class="time text-muted">Yesterday</small>
-                		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                	</a>
-                </li>     
-                <li>
-                	<a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Kate</strong>
-                		</div>
-                		<div class="last-message text-muted">Congratulations!!</div>
-                		<small class="time text-muted">Yesterday</small>
-                		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                	</a>
-                </li>        
-                <li>
-                	<a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_6.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Kate</strong>
-                		</div>
-                		<div class="last-message text-muted">Thanks for the update.</div>
-                		<small class="time text-muted">Yesterday</small>
-                		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                	</a>
-                </li>          
-                <li>
-                	<a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_5.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Kate</strong>
-                		</div>
-                		<div class="last-message text-muted">Hey!! Whats up Buddy....</div>
-                		<small class="time text-muted">Yesterday</small>
-                		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                	</a>
-                </li>
-                <li>
-                    <a href="#" class="clearfix">
-                		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Jane Doe</strong>
-                		</div>
-                		<div class="last-message text-muted">Meet up?</div>
-                		<small class="time text-muted">5 mins ago</small>
-                	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-                	</a>
-                </li>                 
-            </ul>
-		</div>
-        
-        <!--=========================================================-->
-        <!-- selected chat -->
-    	<div class="col-md-8 bg-white ">
-            <div class="chat-message">
-                <ul class="chat">
-                    <li class="left clearfix">
-                    	<span class="chat-img pull-left">
-                    		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
-                    	</span>
-                    	<div class="chat-body clearfix">
-                    		<div class="header">
-                    			<strong class="primary-font">John Doe</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
-                    		</div>
-                    		<p>
-                    			Hey Sarah!
-                    		</p>
-                    	</div>
-                    </li>
-                    <li class="right clearfix">
-                    	<span class="chat-img pull-right">
-                    		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                    	</span>
-                    	<div class="chat-body clearfix">
-                    		<div class="header">
-                    			<strong class="primary-font">Sarah</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                    		</div>
-                    		<p>
-                    			Hey John! 
-                    		</p>
-                    	</div>
-                    </li>
-                    <li class="left clearfix">
-                        <span class="chat-img pull-left">
-                    		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
-                    	</span>
-                    	<div class="chat-body clearfix">
-                    		<div class="header">
-                    			<strong class="primary-font">John Doe</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
-                    		</div>
-                    		<p>
-                    			Whats Up?
-                    		</p>
-                    	</div>
-                    </li>
-                    <li class="right clearfix">
-                        <span class="chat-img pull-right">
-                    		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                    	</span>
-                    	<div class="chat-body clearfix">
-                    		<div class="header">
-                    			<strong class="primary-font">Sarah</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                    		</div>
-                    		<p>
-                    			Fine... Hope you are fine too.... 
-                    		</p>
-                    	</div>
-                    </li>                    
-                    <li class="left clearfix">
-                        <span class="chat-img pull-left">
-                    		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
-                    	</span>
-                    	<div class="chat-body clearfix">
-                    		<div class="header">
-                    			<strong class="primary-font">John Doe</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
-                    		</div>
-                    		<p>
-                    			Tmrw we are having get together and expect your presence.
-                    		</p>
-                    	</div>
-                    </li>
-                    <li class="right clearfix">
-                        <span class="chat-img pull-right">
-                    		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                    	</span>
-                    	<div class="chat-body clearfix">
-                    		<div class="header">
-                    			<strong class="primary-font">Sarah</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                    		</div>
-                    		<p>
-                    			Sure I will. 
-                    		</p>
-                    	</div>
-                    </li>
-                    <li class="right clearfix">
-                        <span class="chat-img pull-right">
-                    		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                    	</span>
-                    	<div class="chat-body clearfix">
-                    		<div class="header">
-                    			<strong class="primary-font">Sarah</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
-                    		</div>
-                    		<p>
-                    			Ok then meet you there. Bye!
-                    		</p>
-                    	</div>
-                    </li>                    
-                </ul>
-            </div>
-            <div class="chat-box bg-white">
-            	<div class="input-group">
-            		<input class="form-control border no-shadow no-rounded" placeholder="Type your message here">
-            		<span class="input-group-btn">
-            			<button class="btn btn-success no-rounded" type="button">Send</button>
-            		</span>
-            	</div><!-- /input-group -->	
-            </div>            
-		</div>        
-	</div>
-</div>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+      <div class="container">
+      <div class="row clearfix">
+          <div class="col-lg-12">
+              <div class="card chat-app">
+                  <div id="plist" class="people-list">
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-search"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Search...">
+                      </div>
+                      <ul class="list-unstyled chat-list mt-2 mb-0">
+                          <li class="clearfix">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                              <div class="about">
+                                  <div class="name">Vincent Porter</div>
+                                  <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            
+                              </div>
+                          </li>
+                          <li class="clearfix active">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                              <div class="about">
+                                  <div class="name">Aiden Chavez</div>
+                                  <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                              </div>
+                          </li>
+                          <li class="clearfix">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
+                              <div class="about">
+                                  <div class="name">Mike Thomas</div>
+                                  <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                              </div>
+                          </li>                                    
+                          <li class="clearfix">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                              <div class="about">
+                                  <div class="name">Christian Kelly</div>
+                                  <div class="status"> <i class="fa fa-circle offline"></i> left 10 hours ago </div>
+                              </div>
+                          </li>
+                          <li class="clearfix">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                              <div class="about">
+                                  <div class="name">Monica Ward</div>
+                                  <div class="status"> <i class="fa fa-circle online"></i> online </div>
+                              </div>
+                          </li>
+                          <li class="clearfix">
+                              <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
+                              <div class="about">
+                                  <div class="name">Dean Henry</div>
+                                  <div class="status"> <i class="fa fa-circle offline"></i> offline since Oct 28 </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="chat">
+                      <div class="chat-header clearfix">
+                          <div class="row">
+                              <div class="col-lg-6">
+                                  <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                  </a>
+                                  <div class="chat-about">
+                                      <h6 class="m-b-0">Aiden Chavez</h6>
+                                      <small>Last seen: 2 hours ago</small>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6 hidden-sm text-right">
+                                  <a href="javascript:void(0);" class="btn btn-outline-secondary"><i class="fa fa-camera"></i></a>
+                                  <a href="javascript:void(0);" class="btn btn-outline-primary"><i class="fa fa-image"></i></a>
+                                  <a href="javascript:void(0);" class="btn btn-outline-info"><i class="fa fa-cogs"></i></a>
+                                  <a href="javascript:void(0);" class="btn btn-outline-warning"><i class="fa fa-question"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="chat-history">
+                          <ul class="m-b-0">
+                              <li class="clearfix">
+                                  <div class="message-data text-right">
+                                      <span class="message-data-time">10:10 AM, Today</span>
+                                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                                  </div>
+                                  <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                              </li>
+                              <li class="clearfix">
+                                  <div class="message-data">
+                                      <span class="message-data-time">10:12 AM, Today</span>
+                                  </div>
+                                  <div class="message my-message">Are we meeting today?</div>                                    
+                              </li>                               
+                              <li class="clearfix">
+                                  <div class="message-data">
+                                      <span class="message-data-time">10:15 AM, Today</span>
+                                  </div>
+                                  <div class="message my-message">Project has been already finished and I have results to show you.</div>
+                              </li>
+                          </ul>
+                      </div>
+                      <div class="chat-message clearfix">
+                          <div class="input-group mb-0">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fa fa-send"></i></span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="Enter text here...">                                    
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
     </body>
 </html>
