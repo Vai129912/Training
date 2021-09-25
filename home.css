@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header{
+    background-color: palevioletred;
+    padding: 10px;
+    text-align: center;
+    font-style: oblique;
+    font-size: 35px;
+    color: rgb(245, 224, 182);
+}
+nav{
+    float: left;
+    width: 10%;
+    height: 70px;
+    background-color: whitesmoke;
+    color: black;
+}
+article {
+    background-image: url("todo.jpg");
+  }
+  
+  section::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+@media (max-width: 600px) {
+    nav{
+      width: 100%;
+      height: auto;
+    }
+  }
